@@ -15,6 +15,9 @@ public abstract class Product {
         this.price = price;
     }
 
+    public Product(String name, double price, double weight) {
+    }
+
     public abstract String getType();
     public boolean isGift() {
         return false;
