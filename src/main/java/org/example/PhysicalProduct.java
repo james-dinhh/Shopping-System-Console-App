@@ -1,12 +1,18 @@
+/**
+ * @author <Dinh Le Hong Tin - s3932134>
+ */
 package org.example;
 
-public class PhysicalProduct extends Product{
+public class PhysicalProduct extends Product implements GiftProduct {
+    //Attributes
     private double weight;
-    public PhysicalProduct(String name, String description, int quantity, double price) {
+    //Constructor
+    public PhysicalProduct(String name, String description, int quantity, double price, double weight) {
         super(name, description, quantity, price);
         this.weight = weight;
     }
 
+    //Getter and Setter methods
     public double getWeight() {
         return weight;
     }
@@ -17,16 +23,6 @@ public class PhysicalProduct extends Product{
 
     @Override
     public String getType() {
-        return "Physical - " + getName();
-    }
-
-    @Override
-    public String toString() {
-        return "PhysicalProduct{" +
-                "weight=" + weight +
-                '}';
-    }
-    public boolean isGift() {
-        return false;
+        return "PHYSICAL - " + getName();
     }
 }

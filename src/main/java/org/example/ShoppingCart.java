@@ -1,12 +1,17 @@
+/**
+ * @author <Dinh Le Hong Tin - s3932134>
+ */
 package org.example;
 
 import java.util.HashSet;
+import java.util.Scanner;
 import java.util.Set;
 
 public class ShoppingCart implements Comparable<ShoppingCart> {
     private HashSet<String> cart;
     private Set<String> items;
     private ProductService productService;
+    private static Scanner scanner = new Scanner(System.in);
 
     public ShoppingCart(ProductService productService) {
         this.cart = new HashSet<>();
@@ -24,6 +29,8 @@ public class ShoppingCart implements Comparable<ShoppingCart> {
         return true;
     }
 
+
+
     public boolean removeItem(String productName) {
         Product product = productService.getProductByName(productName);
         if (product == null || !cart.contains(productName)) {
@@ -37,6 +44,7 @@ public class ShoppingCart implements Comparable<ShoppingCart> {
     public double cartAmount() {
         double total = 0.0;
         double totalWeight = 0.0;
+        double shippingFee = 0.0;
         for (String productName : cart) {
             Product product = productService.getProductByName(productName);
             if (product instanceof PhysicalProduct) {
@@ -44,7 +52,8 @@ public class ShoppingCart implements Comparable<ShoppingCart> {
             }
             total += product.getPrice();
         }
-        return total + (totalWeight * 0.1);
+        shippingFee = total + totalWeight * 0.1;
+        return shippingFee;
     }
 
     public double getTotalWeight() {

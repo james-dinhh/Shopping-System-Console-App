@@ -1,6 +1,10 @@
+/**
+ * @author <Dinh Le Hong Tin - s3932134>
+ */
 package org.example;
 
 public abstract class Product {
+    //Attributes
     private String name;
     private String description;
     private int quantity;
@@ -8,6 +12,7 @@ public abstract class Product {
     private String message;
 
 
+    //Constructor
     public Product(String name, String description, int quantity, double price) {
         this.name = name;
         this.description = description;
@@ -19,9 +24,6 @@ public abstract class Product {
     }
 
     public abstract String getType();
-    public boolean isGift() {
-        return false;
-    }
 
     public String toString() {
         return name + " - " + description + " - " + quantity + " available - $" + price + " - " + getType();
