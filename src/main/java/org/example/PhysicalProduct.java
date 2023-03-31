@@ -3,7 +3,7 @@
  */
 package org.example;
 
-public class PhysicalProduct extends Product implements GiftProduct {
+public class PhysicalProduct extends Product {
     //Attributes
     private double weight;
     //Constructor
@@ -24,5 +24,12 @@ public class PhysicalProduct extends Product implements GiftProduct {
     @Override
     public String getType() {
         return "PHYSICAL - " + getName();
+    }
+
+    @Override
+    public void displayInfo() {
+        System.out.println("Name: " + this.name + " - Description: " + this.description + " - Quantity: "
+                + this.quantity + " - Price: " + this.price + " - Weight: " + this.weight);
+
     }
 }

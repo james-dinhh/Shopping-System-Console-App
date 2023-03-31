@@ -3,13 +3,13 @@
  */
 package org.example;
 
-public abstract class Product {
+public abstract class Product implements GiftProduct {
     //Attributes
-    private String name;
-    private String description;
-    private int quantity;
-    private double price;
-    private String message;
+    protected String name;
+    protected String description;
+    protected int quantity;
+    protected double price;
+    protected String message;
 
 
     //Constructor
@@ -18,15 +18,17 @@ public abstract class Product {
         this.description = description;
         this.quantity = quantity;
         this.price = price;
+        this.message = "";
     }
 
     public Product(String name, double price, double weight) {
     }
 
     public abstract String getType();
+    public abstract void displayInfo();
 
     public String toString() {
-        return name + " - " + description + " - " + quantity + " available - $" + price + " - " + getType();
+        return "Name: " + this.name + " - Description: " + this.description + " - Quantity: " + this.quantity + " - Price: " + this.price;
     }
 
     public String getName() {
@@ -62,7 +64,7 @@ public abstract class Product {
     }
 
     public String getMessage() {
-        return message;
+        return this.message;
     }
 
     public void setMessage(String message) {

@@ -7,13 +7,14 @@ import java.util.*;
 
 public class ProductService {
     private static ArrayList<Product> productList;
+
     private static Scanner scanner = new Scanner(System.in);
 
 
     public ProductService() {
-        productList = new ArrayList<>();
-
+        this.productList = new ArrayList<Product>();
     }
+
 
     public static boolean isProductExisted(String name) {
         for (Product product : productList) {
@@ -149,12 +150,13 @@ public class ProductService {
         return null;
     }
 
-    public static ArrayList<Product> getProductList() {
+    public ArrayList<Product> getProductList() {
         return productList;
     }
 
-    public static void setProductList(ArrayList<Product> productList) {
-        ProductService.productList = productList;
+
+    public void setProductList(ArrayList<Product> productList) {
+        this.productList = productList;
     }
 }
 

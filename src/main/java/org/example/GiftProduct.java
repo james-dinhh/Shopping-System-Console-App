@@ -1,6 +1,6 @@
 package org.example;
 
 public interface GiftProduct {
-    void setMessage(String msg);
-    String getMessage();
+    public void setMessage(String msg);
+    public String getMessage();
 }
