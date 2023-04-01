@@ -5,19 +5,10 @@ package org.example;
 
 import java.util.*;
 
-/**
- * The type Shopping cart.
- */
 public class ShoppingCart implements Comparable<ShoppingCart> {
     private HashSet<String> cart;
-//    private Set<String> items;
     private ProductService productService;
 
-    /**
-     * Instantiates a new Shopping cart.
-     *
-     * @param productService the product service
-     */
     public ShoppingCart(ProductService productService) {
         this.cart = new HashSet<>();
 //        this.items = new HashSet<>();
@@ -112,14 +103,9 @@ public class ShoppingCart implements Comparable<ShoppingCart> {
         return total;
     }
 
-
-
     @Override
     public String toString() {
-//        return "ShoppingCart: " +
-//                "cart=" + cart +
-//                ", items=" + items +
-//                '}';
+
         return "This cart includes: " + this.cart + "\nTotal weight: "
                 + this.getTotalWeight() + "\nTotal payment : " + this.cartAmount() + "\n --------";
     }
