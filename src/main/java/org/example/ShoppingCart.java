@@ -107,7 +107,7 @@ public class ShoppingCart implements Comparable<ShoppingCart> {
     public String toString() {
 
         return "This cart includes: " + this.cart + "\nTotal weight: "
-                + this.getTotalWeight() + "\nTotal payment : " + this.cartAmount() + "\n --------";
+                + this.getTotalWeight() + "\nTotal payment : " + this.cartAmount() + "\n     --------    ";
     }
 
     @Override

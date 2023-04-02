@@ -13,6 +13,19 @@ public class Main {
         System.out.println("Instructor: Mr. Tri Dang");
         System.out.println("s3932134, Dinh Le Hong Tin");
     }
+    public static void menuUI() {
+        System.out.println("-".repeat(30));
+        System.out.println("Please select an option:");
+        System.out.println("1. Create new product");
+        System.out.println("2. Edit product");
+        System.out.println("3. Create new shopping cart");
+        System.out.println("4. Add product to shopping cart");
+        System.out.println("5. Remove product from shopping cart");
+        System.out.println("6. Display cart amount");
+        System.out.println("7. Display all shopping carts based on total weight");
+        System.out.println("0. Exit");
+        System.out.println("-".repeat(30));
+    }
 
     private static ProductService productService = new ProductService();
     private static ArrayList<ShoppingCart> shoppingCartList = new ArrayList<ShoppingCart>();
@@ -24,14 +37,12 @@ public class Main {
 
         welcomeScreen();
         Scanner scanner = new Scanner(System.in);
-        boolean isRunning = true;
 
         while (true) {
 
             menuUI();
             int option = scanner.nextInt();
             scanner.nextLine();
-
 
             switch (option) {
                 case 1:
@@ -79,7 +90,6 @@ public class Main {
                 case 0:
                     System.out.println("Exiting ...");
                     System.exit(0);
-//                    isRunning = false;
                 default:
                     System.out.println("Invalid option. Please try again.");
                     break;
@@ -93,22 +103,6 @@ public class Main {
         shoppingCartList.add(shoppingCart);
         System.out.println("New shopping cart created!");
     }
-
-//    private static void addItem() {
-//        Scanner scanner = new Scanner(System.in);
-//        System.out.print("Enter product name: ");
-//        String productName = scanner.nextLine();
-//
-//        for (ShoppingCart shoppingCart : shoppingCartList) {
-//            ShoppingCart lastShoppingCart = shoppingCartList.get(shoppingCartList.size() - 1);
-//            if (lastShoppingCart.addItem(productName)){
-//            System.out.println("Item added to shopping cart successfully");
-//            System.out.println("Remaining quantities of product is: " + shoppingCart.getProductService().getProductByName(productName).getQuantity());
-//         }
-//        }
-//
-//        System.out.println("Unable to add item to shopping cart.");
-//    }
     private static void addItem() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter product name: ");
@@ -144,7 +138,7 @@ public class Main {
     }
     private static void displayAllShoppingCart() {
         // Sort ascending
-        Collections.sort(shoppingCartList, new Comparator<ShoppingCart>() {
+        shoppingCartList.sort(new Comparator<ShoppingCart>() {
             @Override
             public int compare(ShoppingCart cart1, ShoppingCart cart2) {
                 return Double.compare(cart1.getTotalWeight(), cart2.getTotalWeight());
@@ -154,20 +148,6 @@ public class Main {
         for (ShoppingCart shoppingCart : shoppingCartList) {
             System.out.println(shoppingCart.toString());
         }
-    }
-
-    public static void menuUI() {
-        System.out.println("-".repeat(30));
-        System.out.println("Please select an option:");
-        System.out.println("1. Create new product");
-        System.out.println("2. Edit product");
-        System.out.println("3. Create new shopping cart");
-        System.out.println("4. Add product to shopping cart");
-        System.out.println("5. Remove product from shopping cart");
-        System.out.println("6. Display cart amount");
-        System.out.println("7. Display all shopping carts based on total weight");
-        System.out.println("0. Exit");
-        System.out.println("-".repeat(30));
     }
 }
 
