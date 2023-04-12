@@ -1,36 +1,73 @@
 /**
  * @author <Dinh Le Hong Tin - s3932134>
+ *     Sources: https://github.com/TriDang/cosc2440-2023-s1
+ *     https://www.jetbrains.com/help/idea/class-diagram.html
+ *
  */
-package org.example;
+package ASM1;
 
 import java.util.*;
 
+/**
+ * The type Shopping cart.
+ */
 public class ShoppingCart implements Comparable<ShoppingCart> {
     private HashSet<String> cart;
     private ProductService productService;
 
+    /**
+     * Instantiates a new Shopping cart.
+     *
+     * @param productService the product service
+     */
     public ShoppingCart(ProductService productService) {
         this.cart = new HashSet<>();
 //        this.items = new HashSet<>();
         this.productService = productService;
     }
 
+    /**
+     * Gets cart.
+     *
+     * @return the cart
+     */
     public HashSet<String> getCart() {
         return cart;
     }
 
+    /**
+     * Sets cart.
+     *
+     * @param cart the cart
+     */
     public void setCart(HashSet<String> cart) {
         this.cart = cart;
     }
 
+    /**
+     * Gets product service.
+     *
+     * @return the product service
+     */
     public ProductService getProductService() {
         return productService;
     }
 
+    /**
+     * Sets product service.
+     *
+     * @param productService the product service
+     */
     public void setProductService(ProductService productService) {
         this.productService = productService;
     }
 
+    /**
+     * Check existed product on cart boolean.
+     *
+     * @param productName the product name
+     * @return the boolean
+     */
     public boolean checkExistedProductOnCart(String productName) {
         for (String item : cart) {
             if (item.equals(productName)) {
@@ -39,6 +76,13 @@ public class ShoppingCart implements Comparable<ShoppingCart> {
         }
         return false;
     }
+
+    /**
+     * Add item boolean.
+     *
+     * @param productName the product name
+     * @return the boolean
+     */
     public boolean addItem(String productName) {
         Product product = productService.getProductByName(productName);
         if (product == null || product.getQuantity() == 0 || cart.contains(productName)) {

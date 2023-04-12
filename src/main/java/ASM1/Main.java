@@ -1,7 +1,10 @@
 /**
  * @author <Dinh Le Hong Tin - s3932134>
+ *     Sources: https://github.com/TriDang/cosc2440-2023-s1
+ *     https://www.jetbrains.com/help/idea/class-diagram.html
+ *
  */
-package org.example;
+package ASM1;
 import java.util.*;
 
 public class Main {
@@ -67,13 +70,13 @@ public class Main {
                     System.out.println("-".repeat(30));
                     System.out.println("YOU ARE ADDING A PRODUCT TO THE SHOPPING CART ...");
                     System.out.println("-".repeat(30));
-                    addItem();
+                    addItemToCurrentCart();
                     break;
                 case 5:
                     System.out.println("-".repeat(30));
                     System.out.println("YOU ARE REMOVING A PRODUCT FROM THE SHOPPING CART ...");
                     System.out.println("-".repeat(30));
-                    removeItem();
+                    removeItemFromCurrentCart();
                     break;
                 case 6:
                     System.out.println("-".repeat(30));
@@ -98,12 +101,12 @@ public class Main {
 
     }
 
-    private static void createShoppingCart() {
+    public static void createShoppingCart() {
         ShoppingCart shoppingCart = new ShoppingCart(productService);
         shoppingCartList.add(shoppingCart);
         System.out.println("New shopping cart created!");
     }
-    private static void addItem() {
+    public static void addItemToCurrentCart() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter product name: ");
         String productName = scanner.nextLine();
@@ -111,12 +114,14 @@ public class Main {
 
         if (lastShoppingCart.addItem(productName)) {
             System.out.println("Item added to shopping cart.");
+            System.out.println("Remaining quantities of product is: " + shoppingCart.getProductService().getProductByName(productName).getQuantity());
+
             return;
         }
         System.out.println("Unable to add item to shopping cart.");
     }
 
-    private static void removeItem() {
+    public static void removeItemFromCurrentCart() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter product name: ");
         String productName = scanner.nextLine();
@@ -130,15 +135,15 @@ public class Main {
         System.out.println("Unable to remove item from shopping cart.");
     }
 
-    private static void calculateCartAmount() {
+    public static void calculateCartAmount() {
         for (ShoppingCart shoppingCart : shoppingCartList) {
             double totalAmount = shoppingCart.cartAmount();
             System.out.println("Total cart amount: " + totalAmount);
         }
     }
-    private static void displayAllShoppingCart() {
+    public static void displayAllShoppingCart() {
         // Sort ascending
-        shoppingCartList.sort(new Comparator<ShoppingCart>() {
+        Collections.sort(shoppingCartList, new Comparator<ShoppingCart>() {
             @Override
             public int compare(ShoppingCart cart1, ShoppingCart cart2) {
                 return Double.compare(cart1.getTotalWeight(), cart2.getTotalWeight());

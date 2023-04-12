@@ -1,21 +1,36 @@
 /**
  * @author <Dinh Le Hong Tin - s3932134>
+ *     Sources: https://github.com/TriDang/cosc2440-2023-s1
+ *     https://www.jetbrains.com/help/idea/class-diagram.html
+ *
  */
-package org.example;
+package ASM1;
 
 import java.util.*;
 
+/**
+ * The type Product service.
+ */
 public class ProductService {
     private static ArrayList<Product> productList;
 
     private static Scanner scanner = new Scanner(System.in);
 
 
+    /**
+     * Instantiates a new Product service.
+     */
     public ProductService() {
         this.productList = new ArrayList<Product>();
     }
 
 
+    /**
+     * Is product existed boolean.
+     *
+     * @param name the name
+     * @return the boolean
+     */
     public static boolean isProductExisted(String name) {
         for (Product product : productList) {
             if (product.getName().equals(name)) {
@@ -26,6 +41,9 @@ public class ProductService {
         return false;
     }
 
+    /**
+     * Create product.
+     */
     public static void createProduct() {
         String name = "";
         while (name.equals("")) {
@@ -91,9 +109,12 @@ public class ProductService {
         } else {
             productList.add(new DigitalProduct(name, description, quantity, price));
         }
-        System.out.println("Product added successfully.");
+        System.out.println("Product added successfully. \nIf you want to set a message for your new product, please enter number 2.");
     }
 
+    /**
+     * Edit product.
+     */
     public static void editProduct() {
         Scanner scanner = new Scanner(System.in);
 
@@ -136,12 +157,19 @@ public class ProductService {
                 String message = scanner.next();
                 ((GiftProduct) productToEdit).setMessage(message);
             }
+
         }
 
         System.out.println("Product updated.");
     }
 
-    public Product getProductByName(String productName) {
+    /**
+     * Gets product by name.
+     *
+     * @param productName the product name
+     * @return the product by name
+     */
+    public static Product getProductByName(String productName) {
         for (Product p : productList) {
             if (p.getName().equals(productName)) {
                 return p;
@@ -150,11 +178,21 @@ public class ProductService {
         return null;
     }
 
-    public ArrayList<Product> getProductList() {
+    /**
+     * Gets product list.
+     *
+     * @return the product list
+     */
+    public static ArrayList<Product> getProductList() {
         return productList;
     }
 
 
+    /**
+     * Sets product list.
+     *
+     * @param productList the product list
+     */
     public void setProductList(ArrayList<Product> productList) {
         this.productList = productList;
     }
