@@ -1,4 +1,4 @@
-# Shopping-System-Console-App
+# Shopping System Console Application
 This is an individual project in course: COSC2440 - Further Programming in RMIT University Vietnam.
 
 I got HD (High Distinction) for this assessment.
